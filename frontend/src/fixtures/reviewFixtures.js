@@ -34,4 +34,4 @@ const reviewFixtures = {
   ],
 };
 
-export { restaurantFixtures };
+export { reviewFixtures };
