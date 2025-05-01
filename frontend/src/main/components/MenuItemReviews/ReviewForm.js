@@ -67,6 +67,46 @@ function ReviewForm({ initialContents, submitAction, buttonLabel = "Create" }) {
         </Form.Control.Feedback>
       </Form.Group>
 
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="stars">Stars</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-stars"}
+          id="stars"
+          type="text"
+          isInvalid={Boolean(errors.stars)}
+          {...register("stars", {
+            required: "Stars is required.",
+            maxLength: {
+              value: 255,
+              message: "Max length 255 characters",
+            },
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.stars?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="comments">Comments</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-comments"}
+          id="comments"
+          type="text"
+          isInvalid={Boolean(errors.comments)}
+          {...register("comments", {
+            required: "Comments is required.",
+            maxLength: {
+              value: 255,
+              message: "Max length 255 characters",
+            },
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.comments?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
+
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
         {buttonLabel}
       </Button>
