@@ -1,22 +1,22 @@
 import { render, screen } from "@testing-library/react";
-import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
+import MenuItemReviewEditPage from "main/pages/MenuItemReviews/MenuItemReviewEditPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
-import { apiReviewFixtures } from "fixtures/reviewFixtures";
+import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
-describe("PlaceholderEditPage tests", () => {
+describe("MenuItemReviewEditPage tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);
 
   const setupUserOnly = () => {
     axiosMock.reset();
     axiosMock.resetHistory();
     axiosMock
-      .onGet("/api/menuitemreviews")
-      .reply(200, apiReviewFixtures.userOnly);
+      .onGet("/api/currentUser")
+      .reply(200, apiCurrentUserFixtures.userOnly);
     axiosMock
       .onGet("/api/systemInfo")
       .reply(200, systemInfoFixtures.showingNeither);
@@ -32,7 +32,7 @@ describe("PlaceholderEditPage tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <PlaceholderEditPage />
+          <MenuItemReviewEditPage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
