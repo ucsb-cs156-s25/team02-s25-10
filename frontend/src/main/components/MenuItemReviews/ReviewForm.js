@@ -34,16 +34,11 @@ function ReviewForm({ initialContents, submitAction, buttonLabel = "Create" }) {
       <Form.Group className="mb-3">
         <Form.Label htmlFor="itemId">Item Id</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-itemId"}
           id="itemId"
           type="text"
           isInvalid={Boolean(errors.itemId)}
           {...register("itemId", {
             required: "Item Id is required.",
-            maxLength: {
-              value: 255,
-              message: "Max length 255 characters",
-            },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -54,7 +49,6 @@ function ReviewForm({ initialContents, submitAction, buttonLabel = "Create" }) {
       <Form.Group className="mb-3">
         <Form.Label htmlFor="reviewerEmail">Reviewer Email</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-reviewerEmail"}
           id="reviewerEmail"
           type="text"
           isInvalid={Boolean(errors.reviewerEmail)}
@@ -70,16 +64,11 @@ function ReviewForm({ initialContents, submitAction, buttonLabel = "Create" }) {
       <Form.Group className="mb-3">
         <Form.Label htmlFor="stars">Stars</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-stars"}
           id="stars"
           type="text"
           isInvalid={Boolean(errors.stars)}
           {...register("stars", {
             required: "Stars is required.",
-            maxLength: {
-              value: 255,
-              message: "Max length 255 characters",
-            },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -107,9 +96,7 @@ function ReviewForm({ initialContents, submitAction, buttonLabel = "Create" }) {
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Button type="submit" data-testid={testIdPrefix + "-submit"}>
-        {buttonLabel}
-      </Button>
+      <Button type="submit">{buttonLabel}</Button>
       <Button
         variant="Secondary"
         onClick={() => navigate(-1)}
