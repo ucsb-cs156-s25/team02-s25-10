@@ -43,7 +43,7 @@ function UCSBDiningCommonsMenuItemForm({
           type="text"
           isInvalid={Boolean(errors.diningCommonsCode)}
           {...register("diningCommonsCode", {
-            required: "diningCommonsCode is required."
+            required: "diningCommonsCode is required.",
           })}
         />
         <Form.Control.Feedback type="invalid">
