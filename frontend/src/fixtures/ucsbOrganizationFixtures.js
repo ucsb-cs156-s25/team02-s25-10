@@ -5,7 +5,7 @@ const ucsbOrganizationFixtures = {
     orgTranslation: "Alpha Phi Alpha",
     inactive: true,
   },
-  threeDates: [
+  threeOrganization: [
     {
       orgCode: "SKY",
       orgTranslationShort: "skydive",
