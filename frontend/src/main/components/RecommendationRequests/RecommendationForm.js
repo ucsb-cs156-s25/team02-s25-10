@@ -2,13 +2,19 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-function RecommendationForm( {initialContents, submitAction, buttonLabel = "Create"} ) {
+function RecommendationForm({
+  initialContents,
+  submitAction,
+  buttonLabel = "Create",
+}) {
+  const defaultValues = initialContents || {};
+
   // Stryker disable all
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues: initialContents || {} });
+  } = useForm({ defaultValues });
   // Stryker restore all
 
   const navigate = useNavigate();
@@ -43,7 +49,7 @@ function RecommendationForm( {initialContents, submitAction, buttonLabel = "Crea
           id="requesterEmail"
           type="text"
           isInvalid={Boolean(errors.requesterEmail)}
-          {...register("professorEmail", {
+          {...register("requesterEmail", {
             required: "Requester Email is required.",
             maxLength: {
               value: 255,
@@ -97,57 +103,59 @@ function RecommendationForm( {initialContents, submitAction, buttonLabel = "Crea
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="dateRequested">Date Requested (iso format)</Form.Label>
+        <Form.Label htmlFor="dateRequested">
+          Date Requested (iso format)
+        </Form.Label>
         <Form.Control
-            data-testid={{testIdPrefix}+"-dateRequested"}
-            id="dateRequested"
-            type="datetime-local"
-            isInvalid={Boolean(errors.localDateTime)}
-            {...register("dateRequested", {
+          data-testid={testIdPrefix + "-dateRequested"}
+          id="dateRequested"
+          type="datetime-local"
+          isInvalid={Boolean(errors.localDateTime)}
+          {...register("dateRequested", {
             required: true,
             pattern: isodate_regex,
-            })}
+          })}
         />
         <Form.Control.Feedback type="invalid">
-            {errors.dateRequested && "Date Requested is required. "}
+          {errors.dateRequested && "Date Requested is required. "}
         </Form.Control.Feedback>
-        </Form.Group>
+      </Form.Group>
 
-        <Form.Group className="mb-3">
+      <Form.Group className="mb-3">
         <Form.Label htmlFor="dateNeeded">Date Needed (iso format)</Form.Label>
         <Form.Control
-            data-testid={{testIdPrefix}+"-dateNeeded"}
-            id="dateNeeded"
-            type="datetime-local"
-            isInvalid={Boolean(errors.localDateTime)}
-            {...register("dateNeeded", {
+          data-testid={testIdPrefix + "-dateNeeded"}
+          id="dateNeeded"
+          type="datetime-local"
+          isInvalid={Boolean(errors.localDateTime)}
+          {...register("dateNeeded", {
             required: true,
             pattern: isodate_regex,
-            })}
+          })}
         />
         <Form.Control.Feedback type="invalid">
-            {errors.dateNeeded && "Date Needed is required. "}
+          {errors.dateNeeded && "Date Needed is required. "}
         </Form.Control.Feedback>
-        </Form.Group>
+      </Form.Group>
 
-        <Form.Group className="mb-3">
-            <Form.Label htmlFor="done">Done</Form.Label>
-            <Form.Select
-                data-testid={testIdPrefix + "-done"}
-                id="done"
-                isInvalid={Boolean(errors.done)}
-                {...register("done", {
-                required: "Done is required.",
-                })}
-            >
-                <option value="">Select...</option>
-                <option value="true">True</option>
-                <option value="false">False</option>
-            </Form.Select>
-            <Form.Control.Feedback type="invalid">
-                {errors.done?.message}
-            </Form.Control.Feedback>
-        </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="done">Done</Form.Label>
+        <Form.Select
+          data-testid={testIdPrefix + "-done"}
+          id="done"
+          isInvalid={Boolean(errors.done)}
+          {...register("done", {
+            required: "Done is required.",
+          })}
+        >
+          <option value="">Select...</option>
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </Form.Select>
+        <Form.Control.Feedback type="invalid">
+          {errors.done?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
 
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
         {buttonLabel}
