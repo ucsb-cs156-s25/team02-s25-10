@@ -43,11 +43,11 @@ function UCSBDiningCommonsMenuItemForm({
           type="text"
           isInvalid={Boolean(errors.diningCommonsCode)}
           {...register("diningCommonsCode", {
-            required: "diningCommonsCode is required.",
+            required: "Dining Commons Code is required.",
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.name?.message}
+          {errors.diningCommonsCode?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -59,11 +59,15 @@ function UCSBDiningCommonsMenuItemForm({
           type="text"
           isInvalid={Boolean(errors.name)}
           {...register("name", {
-            required: "name is required.",
+            required: "Name is required.",
+            maxLength: {
+              value: 30,
+              message: "Max length 30 characters",
+            },
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.description?.message}
+          {errors.name?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -75,11 +79,11 @@ function UCSBDiningCommonsMenuItemForm({
           type="text"
           isInvalid={Boolean(errors.station)}
           {...register("station", {
-            required: "station is required.",
+            required: "Station is required.",
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.description?.message}
+          {errors.station?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
