@@ -78,7 +78,7 @@ describe("UCSBOrganizationsEditPage tests", () => {
     beforeEach(() => {
       axiosMock.reset();
       axiosMock.resetHistory();
-      
+
       // Load the page first
       axiosMock
         .onGet("/api/currentUser")
@@ -86,7 +86,7 @@ describe("UCSBOrganizationsEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-        
+
       // Mock the specific API call
       axiosMock
         .onGet("/api/ucsborganizations", { params: { code: "SKY" } })
@@ -96,16 +96,14 @@ describe("UCSBOrganizationsEditPage tests", () => {
           orgTranslation: "skydiving",
           inactive: true,
         });
-        
+
       // The PUT request needs to be set up for success
-      axiosMock
-        .onPut('/api/ucsborganizations')
-        .reply(200, {
-          orgCode: "SKY1",
-          orgTranslationShort: "skydive1",
-          orgTranslation: "skydiving1",
-          inactive: "false"
-        });
+      axiosMock.onPut("/api/ucsborganizations").reply(200, {
+        orgCode: "SKY1",
+        orgTranslationShort: "skydive1",
+        orgTranslation: "skydiving1",
+        inactive: "false",
+      });
     });
 
     const queryClient = new QueryClient();
@@ -135,9 +133,7 @@ describe("UCSBOrganizationsEditPage tests", () => {
       expect(orgTranslationShortField).toBeInTheDocument();
       expect(orgTranslationShortField).toHaveValue("skydive");
       expect(orgTranslationField).toBeInTheDocument();
-      expect(orgTranslationField).toHaveValue(
-        "skydiving",
-      );
+      expect(orgTranslationField).toHaveValue("skydiving");
       expect(inactiveField).toBeInTheDocument();
       expect(inactiveField).toHaveValue("true");
 
@@ -187,8 +183,12 @@ describe("UCSBOrganizationsEditPage tests", () => {
       await screen.findByTestId("UCSBOrganizationForm-orgCode");
 
       const orgCodeField = screen.getByTestId("UCSBOrganizationForm-orgCode");
-      const orgTranslationShortField = screen.getByTestId("UCSBOrganizationForm-orgTranslationShort");
-      const orgTranslationField = screen.getByTestId("UCSBOrganizationForm-orgTranslation");
+      const orgTranslationShortField = screen.getByTestId(
+        "UCSBOrganizationForm-orgTranslationShort",
+      );
+      const orgTranslationField = screen.getByTestId(
+        "UCSBOrganizationForm-orgTranslation",
+      );
       const inactiveField = screen.getByTestId("UCSBOrganizationForm-inactive");
       const submitButton = screen.getByText("Update");
 
@@ -204,11 +204,11 @@ describe("UCSBOrganizationsEditPage tests", () => {
       fireEvent.change(orgTranslationShortField, {
         target: { value: "skydive1" },
       });
-      fireEvent.change(orgTranslationField, { 
-        target: { value: "skydiving1" } 
+      fireEvent.change(orgTranslationField, {
+        target: { value: "skydiving1" },
       });
-      fireEvent.change(inactiveField, { 
-        target: { value: "false" } 
+      fireEvent.change(inactiveField, {
+        target: { value: "false" },
       });
 
       fireEvent.click(submitButton);
