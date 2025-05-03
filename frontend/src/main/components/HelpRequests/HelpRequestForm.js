@@ -7,7 +7,6 @@ function HelpRequestForm({
   submitAction,
   buttonLabel = "Create",
 }) {
-  // Stryker disable all
   const {
     register,
     formState: { errors },
@@ -17,17 +16,10 @@ function HelpRequestForm({
       {
         ...initialContents,
         requestTime: initialContents?.requestTime?.replace?.("Z", ""),
-    } || {},
+      } || {},
   });
-  // Stryker restore all
 
   const navigate = useNavigate();
-
-  // Stryker disable Regex
-  const isodate_regex =
-    /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-  // Stryker restore Regex
-
   const testIdPrefix = "HelpRequestsForm";
 
   return (
@@ -69,9 +61,7 @@ function HelpRequestForm({
           id="teamId"
           type="text"
           isInvalid={Boolean(errors.teamId)}
-          {...register("teamId", {
-            required: "Team ID is required.",
-          })}
+          {...register("teamId", { required: "Team ID is required." })}
         />
         <Form.Control.Feedback type="invalid">
           {errors.teamId?.message}
@@ -105,10 +95,6 @@ function HelpRequestForm({
           isInvalid={Boolean(errors.requestTime)}
           {...register("requestTime", {
             required: "Request time is required.",
-            pattern: {
-              value: isodate_regex,
-              message: "Request time must be in ISO format.",
-            },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -125,6 +111,10 @@ function HelpRequestForm({
           isInvalid={Boolean(errors.explanation)}
           {...register("explanation", {
             required: "Explanation is required.",
+            maxLength: {
+              value: 255,
+              message: "Max length is 255 characters.",
+            },
           })}
         />
         <Form.Control.Feedback type="invalid">
