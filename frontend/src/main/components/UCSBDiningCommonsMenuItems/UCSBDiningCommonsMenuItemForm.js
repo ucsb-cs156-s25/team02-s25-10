@@ -60,9 +60,9 @@ function UCSBDiningCommonsMenuItemForm({
           {...register("name", {
             required: "Name is required.",
             maxLength: {
-                value: 30,
-                message: "Max length 30 characters",
-              },
+              value: 30,
+              message: "Max length 30 characters",
+            },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -85,9 +85,7 @@ function UCSBDiningCommonsMenuItemForm({
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Button type="submit">
-        {buttonLabel}
-      </Button>
+      <Button type="submit">{buttonLabel}</Button>
       <Button
         variant="Secondary"
         onClick={() => navigate(-1)}
