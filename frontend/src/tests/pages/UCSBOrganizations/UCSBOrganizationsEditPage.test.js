@@ -156,7 +156,7 @@ describe("UCSBOrganizationsEditPage tests", () => {
 
       await waitFor(() => expect(mockToast).toBeCalled());
       expect(mockToast).toHaveBeenCalledWith(
-        "Organization Updated - id: SKY1 orgCode: SKY1"
+        "Organization Updated - id: SKY1 orgCode: SKY1",
       );
 
       expect(mockNavigate).toHaveBeenCalledWith({ to: "/ucsborganizations" });
@@ -217,7 +217,7 @@ describe("UCSBOrganizationsEditPage tests", () => {
 
       await waitFor(() => expect(mockToast).toBeCalled());
       expect(mockToast).toHaveBeenCalledWith(
-        "Organization Updated - id: SKY1 orgCode: SKY1"
+        "Organization Updated - id: SKY1 orgCode: SKY1",
       );
       expect(mockNavigate).toHaveBeenCalledWith({ to: "/ucsborganizations" });
     });
