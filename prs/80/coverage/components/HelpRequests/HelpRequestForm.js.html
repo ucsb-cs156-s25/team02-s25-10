@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -201,19 +201,12 @@
 <a name='L136'></a><a href='#L136'>136</a>
 <a name='L137'></a><a href='#L137'>137</a>
 <a name='L138'></a><a href='#L138'>138</a>
-<a name='L139'></a><a href='#L139'>139</a>
-<a name='L140'></a><a href='#L140'>140</a>
-<a name='L141'></a><a href='#L141'>141</a>
-<a name='L142'></a><a href='#L142'>142</a>
-<a name='L143'></a><a href='#L143'>143</a>
-<a name='L144'></a><a href='#L144'>144</a>
-<a name='L145'></a><a href='#L145'>145</a>
-<a name='L146'></a><a href='#L146'>146</a>
-<a name='L147'></a><a href='#L147'>147</a>
-<a name='L148'></a><a href='#L148'>148</a>
-<a name='L149'></a><a href='#L149'>149</a>
-<a name='L150'></a><a href='#L150'>150</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L139'></a><a href='#L139'>139</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -233,24 +226,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -360,10 +339,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+&nbsp;
+export function removeZ(mystring) {
+  return mystring.replace("Z", "");
+}
 &nbsp;
 function HelpRequestForm({
   initialContents,
@@ -375,16 +357,16 @@ function HelpRequestForm({
     formState: { errors },
     handleSubmit,
   } = useForm({
-    defaultValues:
-      {
-        ...initialContents,
-        requestTime: initialContents?.requestTime?.replace?.("Z", ""),
-      } || <span class="branch-1 cbranch-no" title="branch not covered" >{},</span>
+    defaultValues: initialContents
+      ? {
+          ...initialContents,
+          requestTime: removeZ(initialContents.requestTime),
+        }
+      : {},
   });
 &nbsp;
   const navigate = useNavigate();
   const testIdPrefix = "HelpRequestsForm";
-&nbsp;
   return (
     &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
       {initialContents &amp;&amp; (
@@ -400,11 +382,9 @@ function HelpRequestForm({
           /&gt;
         &lt;/Form.Group&gt;
       )}
-&nbsp;
       &lt;Form.Group className="mb-3"&gt;
         &lt;Form.Label htmlFor="requesterEmail"&gt;Requester Email&lt;/Form.Label&gt;
         &lt;Form.Control
-          data-testid={testIdPrefix + "-requesterEmail"}
           id="requesterEmail"
           type="email"
           isInvalid={Boolean(errors.requesterEmail)}
@@ -416,11 +396,9 @@ function HelpRequestForm({
           {errors.requesterEmail?.message}
         &lt;/Form.Control.Feedback&gt;
       &lt;/Form.Group&gt;
-&nbsp;
       &lt;Form.Group className="mb-3"&gt;
         &lt;Form.Label htmlFor="teamId"&gt;Team ID&lt;/Form.Label&gt;
         &lt;Form.Control
-          data-testid={testIdPrefix + "-teamId"}
           id="teamId"
           type="text"
           isInvalid={Boolean(errors.teamId)}
@@ -430,13 +408,11 @@ function HelpRequestForm({
           {errors.teamId?.message}
         &lt;/Form.Control.Feedback&gt;
       &lt;/Form.Group&gt;
-&nbsp;
       &lt;Form.Group className="mb-3"&gt;
         &lt;Form.Label htmlFor="tableOrBreakoutRoom"&gt;
           Table / Breakout Room
         &lt;/Form.Label&gt;
         &lt;Form.Control
-          data-testid={testIdPrefix + "-tableOrBreakoutRoom"}
           id="tableOrBreakoutRoom"
           type="text"
           isInvalid={Boolean(errors.tableOrBreakoutRoom)}
@@ -448,11 +424,9 @@ function HelpRequestForm({
           {errors.tableOrBreakoutRoom?.message}
         &lt;/Form.Control.Feedback&gt;
       &lt;/Form.Group&gt;
-&nbsp;
       &lt;Form.Group className="mb-3"&gt;
         &lt;Form.Label htmlFor="requestTime"&gt;Request Time (in UTC)&lt;/Form.Label&gt;
         &lt;Form.Control
-          data-testid={testIdPrefix + "-requestTime"}
           id="requestTime"
           type="datetime-local"
           isInvalid={Boolean(errors.requestTime)}
@@ -464,7 +438,6 @@ function HelpRequestForm({
           {errors.requestTime?.message}
         &lt;/Form.Control.Feedback&gt;
       &lt;/Form.Group&gt;
-&nbsp;
       &lt;Form.Group className="mb-3"&gt;
         &lt;Form.Label htmlFor="explanation"&gt;Explanation&lt;/Form.Label&gt;
         &lt;Form.Control
@@ -484,20 +457,15 @@ function HelpRequestForm({
           {errors.explanation?.message}
         &lt;/Form.Control.Feedback&gt;
       &lt;/Form.Group&gt;
-&nbsp;
       &lt;Form.Group className="mb-3"&gt;
         &lt;Form.Check
-          data-testid={testIdPrefix + "-solved"}
           id="solved"
           type="checkbox"
           label="Solved"
           {...register("solved")}
         /&gt;
       &lt;/Form.Group&gt;
-&nbsp;
-      &lt;Button type="submit" data-testid={testIdPrefix + "-submit"}&gt;
-        {buttonLabel}
-      &lt;/Button&gt;
+      &lt;Button type="submit"&gt;{buttonLabel}&lt;/Button&gt;
       &lt;Button
         variant="Secondary"
         onClick={() =&gt; navigate(-1)}
@@ -508,7 +476,6 @@ function HelpRequestForm({
     &lt;/Form&gt;
   );
 }
-&nbsp;
 export default HelpRequestForm;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -517,7 +484,7 @@ export default HelpRequestForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-03T06:11:48.488Z
+                at 2025-05-04T20:31:23.172Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
