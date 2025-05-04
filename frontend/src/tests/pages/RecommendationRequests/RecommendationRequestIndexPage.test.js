@@ -63,12 +63,10 @@ describe("RecommendationRequestIndexPage tests", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByRole("link", { name: "Create Recommendation Request" }),
+        screen.getByText(/Create Recommendation Request/),
       ).toBeInTheDocument();
     });
-    const button = screen.getByRole("link", {
-      name: "Create Recommendation Request",
-    });
+    const button = screen.getByText(/Create Recommendation Request/);
     expect(button).toHaveAttribute("href", "/recommendationrequests/create");
     expect(button).toHaveAttribute("style", "float: right;");
   });
