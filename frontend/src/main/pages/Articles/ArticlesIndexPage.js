@@ -1,17 +1,45 @@
-import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
+import React from "react";
+import { useBackend } from "main/utils/useBackend";
 
-export default function ArticlesIndexPage() {
-  // Stryker disable all : placeholder for future implementation
+import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
+import UCSBArticlesTable from "main/components/UCSBArticles/UCSBArticlesTable";
+import { Button } from "react-bootstrap";
+import { useCurrentUser, hasRole } from "main/utils/currentUser";
+
+export default function UCSBArticlesIndexPage() {
+  const currentUser = useCurrentUser();
+
+  const createButton = () => {
+    if (hasRole(currentUser, "ROLE_ADMIN")) {
+      return (
+        <Button
+          variant="primary"
+          href="/ucsbarticles/create"
+          style={{ float: "right" }}
+        >
+          Create UCSB Article
+        </Button>
+      );
+    }
+  };
+
+  const {
+    data: articles,
+    error: _error,
+    status: _status,
+  } = useBackend(
+    // Stryker disable next-line all : don't test internal caching of React Query
+    ["/api/ucsbarticles/all"],
+    { method: "GET", url: "/api/ucsbarticles/all" },
+    []
+  );
+
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Index page not yet implemented</h1>
-        <p>
-          <a href="/placeholder/create">Create</a>
-        </p>
-        <p>
-          <a href="/placeholder/edit/1">Edit</a>
-        </p>
+        {createButton()}
+        <h1>UCSB Articles</h1>
+        <UCSBArticlesTable articles={articles} currentUser={currentUser} />
       </div>
     </BasicLayout>
   );
