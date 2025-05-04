@@ -195,7 +195,7 @@ describe("RecommendationRequestEditPage tests", () => {
           explanation: "test2",
           dateRequested: "2022-01-01T12:00",
           dateNeeded: "2024-06-01T12:00",
-          done: true,
+          done: "true",
         }),
       ); // posted object
       expect(mockNavigate).toHaveBeenCalledWith({

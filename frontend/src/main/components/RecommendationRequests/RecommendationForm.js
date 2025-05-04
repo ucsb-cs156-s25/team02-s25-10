@@ -138,7 +138,6 @@ function RecommendationForm({
           isInvalid={Boolean(errors.done)}
           {...register("done", {
             required: "Done is required.",
-            setValueAs: (value) => value === "true",
           })}
         >
           <option value="">Select...</option>
