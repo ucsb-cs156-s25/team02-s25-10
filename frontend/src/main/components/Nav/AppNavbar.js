@@ -43,6 +43,14 @@ export default function AppNavbar({
             )}
           </Nav>
 
+          {
+            hasRole(currentUser, "ROLE_USER") && (
+              <>
+                <Nav.Link as={NavLink} to="/restaurants">Restaurants</Nav.Link>
+              </>
+            )
+      }
+
           <>
             {/* be sure that each NavDropdown has a unique id and data-testid  */}
           </>
@@ -74,6 +82,8 @@ export default function AppNavbar({
                 <></>
               )}
             </Nav>
+
+            
 
             <Nav className="ml-auto">
               {currentUser && currentUser.loggedIn ? (
