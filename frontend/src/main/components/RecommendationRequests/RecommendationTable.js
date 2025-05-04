@@ -63,7 +63,7 @@ export default function RecommendationTable({
     {
       Header: "Done",
       accessor: "done",
-      Cell: ({ value }) => (value === true || value === "true" ? "Yes" : "No"),
+      Cell: ({ value }) => value ? "Yes" : "No",
     },
   ];
 

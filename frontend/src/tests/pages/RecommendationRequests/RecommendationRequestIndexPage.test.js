@@ -98,7 +98,7 @@ describe("RecommendationRequestIndexPage tests", () => {
     );
 
     const createRecommendationRequestButton = screen.queryByText(
-      "Create RecommendationRequest",
+      "Create Recommendation Request",
     );
     expect(createRecommendationRequestButton).not.toBeInTheDocument();
 
