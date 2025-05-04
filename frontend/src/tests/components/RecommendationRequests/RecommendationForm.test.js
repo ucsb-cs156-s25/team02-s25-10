@@ -67,25 +67,25 @@ describe("RecommendationForm tests", () => {
     const { dateRequested, dateNeeded } =
       recommendationRequestFixtures.oneRequest;
 
-    expect(await screen.getByLabelText("Id")).toHaveValue(
+    expect(screen.getByLabelText("Id")).toHaveValue(
       String(recommendationRequestFixtures.oneRequest.id),
     );
-    expect(await screen.getByLabelText("Requester Email")).toHaveValue(
+    expect(screen.getByLabelText("Requester Email")).toHaveValue(
       recommendationRequestFixtures.oneRequest.requesterEmail,
     );
-    expect(await screen.getByLabelText("Professor Email")).toHaveValue(
+    expect(screen.getByLabelText("Professor Email")).toHaveValue(
       recommendationRequestFixtures.oneRequest.professorEmail,
     );
-    expect(await screen.getByLabelText("Explanation")).toHaveValue(
+    expect(screen.getByLabelText("Explanation")).toHaveValue(
       recommendationRequestFixtures.oneRequest.explanation,
     );
-    expect(await screen.getByLabelText("Date Requested")).toHaveValue(
+    expect(screen.getByLabelText("Date Requested")).toHaveValue(
       dateRequested.slice(0, 16),
     );
-    expect(await screen.getByLabelText("Date Needed")).toHaveValue(
+    expect(screen.getByLabelText("Date Needed")).toHaveValue(
       dateNeeded.slice(0, 16),
     );
-    expect(await screen.getByLabelText("Done")).toHaveValue(
+    expect(screen.getByLabelText("Done")).toHaveValue(
       String(recommendationRequestFixtures.oneRequest.done),
     );
   });
