@@ -64,15 +64,30 @@ describe("RecommendationForm tests", () => {
     expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
     expect(screen.getByText(`Id`)).toBeInTheDocument();
 
-    const { dateRequested, dateNeeded } = recommendationRequestFixtures.oneRequest;
+    const { dateRequested, dateNeeded } =
+      recommendationRequestFixtures.oneRequest;
 
-    expect(await screen.getByLabelText("Id")).toHaveValue(String(recommendationRequestFixtures.oneRequest.id));
-    expect(await screen.getByLabelText("Requester Email")).toHaveValue(recommendationRequestFixtures.oneRequest.requesterEmail);
-    expect(await screen.getByLabelText("Professor Email")).toHaveValue(recommendationRequestFixtures.oneRequest.professorEmail);
-    expect(await screen.getByLabelText("Explanation")).toHaveValue(recommendationRequestFixtures.oneRequest.explanation);
-    expect(await screen.getByLabelText("Date Requested")).toHaveValue(dateRequested.slice(0, 16));
-    expect(await screen.getByLabelText("Date Needed")).toHaveValue(dateNeeded.slice(0, 16));
-    expect(await screen.getByLabelText("Done")).toHaveValue(String(recommendationRequestFixtures.oneRequest.done));
+    expect(await screen.getByLabelText("Id")).toHaveValue(
+      String(recommendationRequestFixtures.oneRequest.id),
+    );
+    expect(await screen.getByLabelText("Requester Email")).toHaveValue(
+      recommendationRequestFixtures.oneRequest.requesterEmail,
+    );
+    expect(await screen.getByLabelText("Professor Email")).toHaveValue(
+      recommendationRequestFixtures.oneRequest.professorEmail,
+    );
+    expect(await screen.getByLabelText("Explanation")).toHaveValue(
+      recommendationRequestFixtures.oneRequest.explanation,
+    );
+    expect(await screen.getByLabelText("Date Requested")).toHaveValue(
+      dateRequested.slice(0, 16),
+    );
+    expect(await screen.getByLabelText("Date Needed")).toHaveValue(
+      dateNeeded.slice(0, 16),
+    );
+    expect(await screen.getByLabelText("Done")).toHaveValue(
+      String(recommendationRequestFixtures.oneRequest.done),
+    );
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {
@@ -105,7 +120,9 @@ describe("RecommendationForm tests", () => {
     fireEvent.click(submitButton);
 
     await screen.findByText(/Requester Email is required./);
-    expect(screen.getByText(/Professor Email is required./),).toBeInTheDocument();
+    expect(
+      screen.getByText(/Professor Email is required./),
+    ).toBeInTheDocument();
     expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
     expect(screen.getByText(/Date Requested is required./)).toBeInTheDocument();
     expect(screen.getByText(/Date Needed is required./)).toBeInTheDocument();
@@ -123,7 +140,9 @@ describe("RecommendationForm tests", () => {
 
     fireEvent.change(reqEmailInput, { target: { value: "hi" } });
     await waitFor(() => {
-        expect(screen.queryByText(/Max length has 255 characters/)).not.toBeInTheDocument();
+      expect(
+        screen.queryByText(/Max length has 255 characters/),
+      ).not.toBeInTheDocument();
     });
     fireEvent.click(submitButton);
 
@@ -139,7 +158,9 @@ describe("RecommendationForm tests", () => {
 
     fireEvent.change(profEmailInput, { target: { value: "hi" } });
     await waitFor(() => {
-        expect(screen.queryByText(/Max length has 255 characters/)).not.toBeInTheDocument();
+      expect(
+        screen.queryByText(/Max length has 255 characters/),
+      ).not.toBeInTheDocument();
     });
     fireEvent.click(submitButton);
 

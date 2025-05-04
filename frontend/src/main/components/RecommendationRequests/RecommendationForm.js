@@ -7,8 +7,7 @@ function RecommendationForm({
   submitAction,
   buttonLabel = "Create",
 }) {
-    const defaultValues = initialContents;
-  
+  const defaultValues = initialContents;
 
   // Stryker disable all
   const {
@@ -105,33 +104,32 @@ function RecommendationForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="dateRequested">Date Requested</Form.Label>
         <Form.Control
-            id="dateRequested"
-            type="datetime-local"
-            isInvalid={Boolean(errors.dateRequested)}
-            {...register("dateRequested", {
+          id="dateRequested"
+          type="datetime-local"
+          isInvalid={Boolean(errors.dateRequested)}
+          {...register("dateRequested", {
             required: "Date Requested is required.",
-            })}
+          })}
         />
         <Form.Control.Feedback type="invalid">
-            {errors.dateRequested?.message}
+          {errors.dateRequested?.message}
         </Form.Control.Feedback>
-        </Form.Group>
+      </Form.Group>
 
-        <Form.Group className="mb-3">
+      <Form.Group className="mb-3">
         <Form.Label htmlFor="dateNeeded">Date Needed</Form.Label>
         <Form.Control
-            id="dateNeeded"
-            type="datetime-local"
-            isInvalid={Boolean(errors.dateNeeded)}
-            {...register("dateNeeded", {
+          id="dateNeeded"
+          type="datetime-local"
+          isInvalid={Boolean(errors.dateNeeded)}
+          {...register("dateNeeded", {
             required: "Date Needed is required.",
-            })}
+          })}
         />
         <Form.Control.Feedback type="invalid">
-            {errors.dateNeeded?.message}
+          {errors.dateNeeded?.message}
         </Form.Control.Feedback>
-        </Form.Group>
-
+      </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="done">Done</Form.Label>
@@ -151,9 +149,7 @@ function RecommendationForm({
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Button type="submit">
-        {buttonLabel}
-      </Button>
+      <Button type="submit">{buttonLabel}</Button>
       <Button
         variant="Secondary"
         onClick={() => navigate(-1)}
