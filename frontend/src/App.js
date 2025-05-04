@@ -15,6 +15,10 @@ import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
 import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
 
+import ArticleIndexPage from "main/pages/Articles/ArticlesIndexPage";
+import ArticleCreatePage from "main/pages/Articles/ArticlesCreatePage";
+import ArticleEditPage from "main/pages/Articles/ArticlesEditPage";
+
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -96,6 +100,21 @@ function App() {
             />
           </>
         )}
+        {
+      hasRole(currentUser, "ROLE_USER") && (
+        <>
+          <Route exact path="/Articles" element={<ArticlesIndexPage />} />
+        </>
+      )
+}
+{
+      hasRole(currentUser, "ROLE_ADMIN") && (
+        <>
+          <Route exact path="/articles/edit/:id" element={<ArticlesEditPage />} />
+          <Route exact path="/articles/create" element={<ArticlesCreatePage />} />
+        </>
+      )
+}
       </Routes>
     </BrowserRouter>
   );
