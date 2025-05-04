@@ -62,9 +62,13 @@ describe("RecommendationRequestIndexPage tests", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText(/Create Recommendation Request/)).toBeInTheDocument();
+      expect(
+        screen.getByRole("link", { name: "Create Recommendation Request" }),
+      ).toBeInTheDocument();
     });
-    const button = screen.getByText(/Create Recommendation Request/);
+    const button = screen.getByRole("link", {
+      name: "Create Recommendation Request",
+    });
     expect(button).toHaveAttribute("href", "/recommendationrequests/create");
     expect(button).toHaveAttribute("style", "float: right;");
   });
@@ -95,25 +99,39 @@ describe("RecommendationRequestIndexPage tests", () => {
       "3",
     );
 
-    const createRecommendationRequestButton = screen.queryByText("Create RecommendationRequest");
+    const createRecommendationRequestButton = screen.queryByText(
+      "Create RecommendationRequest",
+    );
     expect(createRecommendationRequestButton).not.toBeInTheDocument();
 
-    const requesterEmailInput = screen.getByText(recommendationRequestFixtures.oneRequest.requesterEmail);
+    const requesterEmailInput = screen.getByText(
+      recommendationRequestFixtures.oneRequest.requesterEmail,
+    );
     expect(requesterEmailInput).toBeInTheDocument();
 
-    const profEmailInput = screen.getByText(recommendationRequestFixtures.oneRequest.professorEmail);
+    const profEmailInput = screen.getByText(
+      recommendationRequestFixtures.oneRequest.professorEmail,
+    );
     expect(profEmailInput).toBeInTheDocument();
 
-    const explanationInput = screen.getByText(recommendationRequestFixtures.oneRequest.explanation);
+    const explanationInput = screen.getByText(
+      recommendationRequestFixtures.oneRequest.explanation,
+    );
     expect(explanationInput).toBeInTheDocument();
 
-    const dateRequestedInput = screen.getByText(recommendationRequestFixtures.oneRequest.dateRequested);
+    const dateRequestedInput = screen.getByText(
+      recommendationRequestFixtures.oneRequest.dateRequested,
+    );
     expect(dateRequestedInput).toBeInTheDocument();
 
-    const dateNeededInput = screen.getByText(recommendationRequestFixtures.oneRequest.dateNeeded);
+    const dateNeededInput = screen.getByText(
+      recommendationRequestFixtures.oneRequest.dateNeeded,
+    );
     expect(dateNeededInput).toBeInTheDocument();
 
-    const doneInput = screen.getByText(recommendationRequestFixtures.oneRequest.dateNeeded);
+    const doneInput = screen.getByText(
+      recommendationRequestFixtures.oneRequest.dateNeeded,
+    );
     expect(doneInput).toBeInTheDocument();
 
     // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
@@ -187,7 +205,9 @@ describe("RecommendationRequestIndexPage tests", () => {
     fireEvent.click(deleteButton);
 
     await waitFor(() => {
-      expect(mockToast).toHaveBeenCalledWith("RecommendationRequest with id 1 was deleted");
+      expect(mockToast).toHaveBeenCalledWith(
+        "RecommendationRequest with id 1 was deleted",
+      );
     });
 
     await waitFor(() => {

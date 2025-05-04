@@ -48,7 +48,9 @@ describe("RecommendationRequestEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/recommendationrequests", { params: { id: 17 } }).timeout();
+      axiosMock
+        .onGet("/api/recommendationrequests", { params: { id: 17 } })
+        .timeout();
     });
 
     const queryClient = new QueryClient();
@@ -63,7 +65,9 @@ describe("RecommendationRequestEditPage tests", () => {
         </QueryClientProvider>,
       );
       await screen.findByText("Edit Recommendation Request");
-      expect(screen.queryByTestId("RecommendationRequest-name")).not.toBeInTheDocument();
+      expect(
+        screen.queryByTestId("RecommendationRequest-name"),
+      ).not.toBeInTheDocument();
       restoreConsole();
     });
   });
@@ -80,15 +84,17 @@ describe("RecommendationRequestEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/recommendationrequests", { params: { id: 17 } }).reply(200, {
-        id: 17,
-        requesterEmail: "test_email",
-        professorEmail: "professor_email",
-        explanation: "test",
-        dateRequested: "2025-01-01T12:00",
-        dateNeeded: "2025-05-01T12:00",
-        done: "false",
-      });
+      axiosMock
+        .onGet("/api/recommendationrequests", { params: { id: 17 } })
+        .reply(200, {
+          id: 17,
+          requesterEmail: "test_email",
+          professorEmail: "professor_email",
+          explanation: "test",
+          dateRequested: "2025-01-01T12:00",
+          dateNeeded: "2025-05-01T12:00",
+          done: "false",
+        });
       axiosMock.onPut("/api/recommendationrequests").reply(200, {
         id: 17,
         requesterEmail: "another_email",
@@ -114,9 +120,15 @@ describe("RecommendationRequestEditPage tests", () => {
       await screen.findByTestId("RecommendationForm-id");
 
       const idField = screen.getByTestId("RecommendationForm-id");
-      const requesterEmailField = screen.getByTestId("RecommendationForm-requesterEmail");
-      const professorEmailField = screen.getByTestId("RecommendationForm-professorEmail");
-      const explanationField = screen.getByTestId("RecommendationForm-explanation");
+      const requesterEmailField = screen.getByTestId(
+        "RecommendationForm-requesterEmail",
+      );
+      const professorEmailField = screen.getByTestId(
+        "RecommendationForm-professorEmail",
+      );
+      const explanationField = screen.getByTestId(
+        "RecommendationForm-explanation",
+      );
       const dateRequestedField = screen.getByLabelText("Date Requested");
       const dateNeededField = screen.getByLabelText("Date Needed");
       const doneField = screen.getByLabelText("Done");
@@ -166,11 +178,13 @@ describe("RecommendationRequestEditPage tests", () => {
       fireEvent.click(submitButton);
 
       await waitFor(() => expect(mockToast).toBeCalled());
-      expect(mockToast).toBeCalledWith(
+      expect(mockToast).toHaveBeenCalledWith(
         "Recommendation Request Updated - id: 17 Requester Email: another_email",
       );
 
-      expect(mockNavigate).toHaveBeenCalledWith({ to: "/recommendationrequests" });
+      expect(mockNavigate).toHaveBeenCalledWith({
+        to: "/recommendationrequests",
+      });
 
       expect(axiosMock.history.put.length).toBe(1); // times called
       expect(axiosMock.history.put[0].params).toEqual({ id: 17 });
@@ -184,42 +198,44 @@ describe("RecommendationRequestEditPage tests", () => {
           done: "true",
         }),
       ); // posted object
-      expect(mockNavigate).toHaveBeenCalledWith({ to: "/recommendationrequests" });
+      expect(mockNavigate).toHaveBeenCalledWith({
+        to: "/recommendationrequests",
+      });
     });
 
-  //   test("Changes when you click Update", async () => {
-  //     render(
-  //       <QueryClientProvider client={queryClient}>
-  //         <MemoryRouter>
-  //           <RecommendationRequestEditPage />
-  //         </MemoryRouter>
-  //       </QueryClientProvider>,
-  //     );
+    //   test("Changes when you click Update", async () => {
+    //     render(
+    //       <QueryClientProvider client={queryClient}>
+    //         <MemoryRouter>
+    //           <RecommendationRequestEditPage />
+    //         </MemoryRouter>
+    //       </QueryClientProvider>,
+    //     );
 
-  //     await screen.findByTestId("RecommendationForm-id");
+    //     await screen.findByTestId("RecommendationForm-id");
 
-  //     const idField = screen.getByTestId("RecommendationForm-id");
-  //     const nameField = screen.getByTestId("RecommendationForm-name");
-  //     const descriptionField = screen.getByTestId("RecommendationForm-description");
-  //     const submitButton = screen.getByTestId("RecommendationForm-submit");
+    //     const idField = screen.getByTestId("RecommendationForm-id");
+    //     const nameField = screen.getByTestId("RecommendationForm-name");
+    //     const descriptionField = screen.getByTestId("RecommendationForm-description");
+    //     const submitButton = screen.getByTestId("RecommendationForm-submit");
 
-  //     expect(idField).toHaveValue("17");
-  //     expect(nameField).toHaveValue("Freebirds");
-  //     expect(descriptionField).toHaveValue("Burritos");
-  //     expect(submitButton).toBeInTheDocument();
+    //     expect(idField).toHaveValue("17");
+    //     expect(nameField).toHaveValue("Freebirds");
+    //     expect(descriptionField).toHaveValue("Burritos");
+    //     expect(submitButton).toBeInTheDocument();
 
-  //     fireEvent.change(nameField, {
-  //       target: { value: "Freebirds World Burrito" },
-  //     });
-  //     fireEvent.change(descriptionField, { target: { value: "Big Burritos" } });
+    //     fireEvent.change(nameField, {
+    //       target: { value: "Freebirds World Burrito" },
+    //     });
+    //     fireEvent.change(descriptionField, { target: { value: "Big Burritos" } });
 
-  //     fireEvent.click(submitButton);
+    //     fireEvent.click(submitButton);
 
-  //     await waitFor(() => expect(mockToast).toBeCalled());
-  //     expect(mockToast).toBeCalledWith(
-  //       "Recommendation Request Updated - id: 17 name: Freebirds World Burrito",
-  //     );
-  //     expect(mockNavigate).toBeCalledWith({ to: "/recommendationrequests" });
-  //   });
+    //     await waitFor(() => expect(mockToast).toBeCalled());
+    //     expect(mockToast).toBeCalledWith(
+    //       "Recommendation Request Updated - id: 17 name: Freebirds World Burrito",
+    //     );
+    //     expect(mockNavigate).toBeCalledWith({ to: "/recommendationrequests" });
+    //   });
   });
 });

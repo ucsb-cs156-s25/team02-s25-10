@@ -32,11 +32,15 @@ Default.parameters = {
       });
     }),
     http.put("/api/recommendationrequests", () => {
-      return HttpResponse.json(recommendationRequestFixtures.oneRequest, { status: 200 });
+      return HttpResponse.json(recommendationRequestFixtures.oneRequest, {
+        status: 200,
+      });
     }),
     http.put("/api/recommendationrequests", (req) => {
       window.alert("PUT: " + req.url + " and body: " + req.body);
-      return HttpResponse.json(recommendationRequestFixtures.oneRequest, { status: 200 });
+      return HttpResponse.json(recommendationRequestFixtures.oneRequest, {
+        status: 200,
+      });
     }),
   ],
 };
