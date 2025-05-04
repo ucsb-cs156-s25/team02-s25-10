@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -231,13 +231,7 @@
 <a name='L166'></a><a href='#L166'>166</a>
 <a name='L167'></a><a href='#L167'>167</a>
 <a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a>
-<a name='L170'></a><a href='#L170'>170</a>
-<a name='L171'></a><a href='#L171'>171</a>
-<a name='L172'></a><a href='#L172'>172</a>
-<a name='L173'></a><a href='#L173'>173</a>
-<a name='L174'></a><a href='#L174'>174</a>
-<a name='L175'></a><a href='#L175'>175</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L169'></a><a href='#L169'>169</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -246,32 +240,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -420,7 +408,8 @@ function RecommendationForm({
   submitAction,
   buttonLabel = "Create",
 }) {
-  const defaultValues = initialContents || {};
+    const defaultValues = initialContents;
+  
 &nbsp;
   // Stryker disable all
   const {
@@ -435,8 +424,7 @@ function RecommendationForm({
   const testIdPrefix = "RecommendationForm";
 &nbsp;
   // Stryker disable Regex
-  const isodate_regex =
-    /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+  // const isodate_regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/;
   // Stryker restore Regex
 &nbsp;
   return (
@@ -516,45 +504,39 @@ function RecommendationForm({
       &lt;/Form.Group&gt;
 &nbsp;
       &lt;Form.Group className="mb-3"&gt;
-        &lt;Form.Label htmlFor="dateRequested"&gt;
-          Date Requested (iso format)
-        &lt;/Form.Label&gt;
+        &lt;Form.Label htmlFor="dateRequested"&gt;Date Requested&lt;/Form.Label&gt;
         &lt;Form.Control
-          data-testid={testIdPrefix + "-dateRequested"}
-          id="dateRequested"
-          type="datetime-local"
-          isInvalid={Boolean(errors.localDateTime)}
-          {...register("dateRequested", {
-            required: true,
-            pattern: isodate_regex,
-          })}
+            id="dateRequested"
+            type="datetime-local"
+            isInvalid={Boolean(errors.dateRequested)}
+            {...register("dateRequested", {
+            required: "Date Requested is required.",
+            })}
         /&gt;
         &lt;Form.Control.Feedback type="invalid"&gt;
-          {errors.dateRequested &amp;&amp; "Date Requested is required. "}
+            {errors.dateRequested?.message}
         &lt;/Form.Control.Feedback&gt;
-      &lt;/Form.Group&gt;
+        &lt;/Form.Group&gt;
 &nbsp;
-      &lt;Form.Group className="mb-3"&gt;
-        &lt;Form.Label htmlFor="dateNeeded"&gt;Date Needed (iso format)&lt;/Form.Label&gt;
+        &lt;Form.Group className="mb-3"&gt;
+        &lt;Form.Label htmlFor="dateNeeded"&gt;Date Needed&lt;/Form.Label&gt;
         &lt;Form.Control
-          data-testid={testIdPrefix + "-dateNeeded"}
-          id="dateNeeded"
-          type="datetime-local"
-          isInvalid={Boolean(errors.localDateTime)}
-          {...register("dateNeeded", {
-            required: true,
-            pattern: isodate_regex,
-          })}
+            id="dateNeeded"
+            type="datetime-local"
+            isInvalid={Boolean(errors.dateNeeded)}
+            {...register("dateNeeded", {
+            required: "Date Needed is required.",
+            })}
         /&gt;
         &lt;Form.Control.Feedback type="invalid"&gt;
-          {errors.dateNeeded &amp;&amp; "Date Needed is required. "}
+            {errors.dateNeeded?.message}
         &lt;/Form.Control.Feedback&gt;
-      &lt;/Form.Group&gt;
+        &lt;/Form.Group&gt;
+&nbsp;
 &nbsp;
       &lt;Form.Group className="mb-3"&gt;
         &lt;Form.Label htmlFor="done"&gt;Done&lt;/Form.Label&gt;
         &lt;Form.Select
-          data-testid={testIdPrefix + "-done"}
           id="done"
           isInvalid={Boolean(errors.done)}
           {...register("done", {
@@ -570,7 +552,7 @@ function RecommendationForm({
         &lt;/Form.Control.Feedback&gt;
       &lt;/Form.Group&gt;
 &nbsp;
-      &lt;Button type="submit" data-testid={testIdPrefix + "-submit"}&gt;
+      &lt;Button type="submit"&gt;
         {buttonLabel}
       &lt;/Button&gt;
       &lt;Button
@@ -592,7 +574,7 @@ export default RecommendationForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-03T23:35:33.381Z
+                at 2025-05-04T01:32:50.142Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
