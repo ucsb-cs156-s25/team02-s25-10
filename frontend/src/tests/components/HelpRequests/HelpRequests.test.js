@@ -5,6 +5,7 @@ import { helpRequestsFixtures } from "fixtures/helpRequestsFixtures";
 import HelpRequestForm from "main/components/HelpRequests/HelpRequestForm";
 
 import { QueryClient, QueryClientProvider } from "react-query";
+import { removeZ } from "main/components/HelpRequests/HelpRequestForm";
 
 const mockedNavigate = jest.fn();
 
@@ -14,6 +15,12 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("HelpRequestForm tests", () => {
+  test("that the removeZ function works properly", () => {
+    expect(removeZ("ABC")).toBe("ABC");
+    expect(removeZ("ABCZ")).toBe("ABC");
+    expect(removeZ("")).toBe("");
+  });
+
   const queryClient = new QueryClient();
   const testId = "HelpRequestsForm";
 
@@ -34,11 +41,27 @@ describe("HelpRequestForm tests", () => {
       </QueryClientProvider>,
     );
 
-    expect(await screen.findByText(/Create/)).toBeInTheDocument();
+    const submitButton = await screen.findByText(/Create/);
+    expect(submitButton).toBeInTheDocument();
 
+    // Verify all labels exist
     expectedLabels.forEach((labelText) => {
       expect(screen.getByText(labelText)).toBeInTheDocument();
     });
+
+    const requesterEmailInput = screen.getByLabelText("Requester Email");
+    const teamIdInput = screen.getByLabelText("Team ID");
+    const tableInput = screen.getByLabelText("Table / Breakout Room");
+    const requestTimeInput = screen.getByLabelText("Request Time (in UTC)");
+    const explanationInput = screen.getByLabelText("Explanation");
+    const solvedCheckbox = screen.getByLabelText("Solved");
+
+    expect(requesterEmailInput).toHaveValue("");
+    expect(teamIdInput).toHaveValue("");
+    expect(tableInput).toHaveValue("");
+    expect(requestTimeInput).toHaveValue("");
+    expect(explanationInput).toHaveValue("");
+    expect(solvedCheckbox).not.toBeChecked();
   });
 
   test("renders correctly with initialContents", async () => {
@@ -55,6 +78,12 @@ describe("HelpRequestForm tests", () => {
 
     expect(await screen.findByText(/Update/)).toBeInTheDocument();
     expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
+
+    expect(screen.getByLabelText("Request Time (in UTC)")).toHaveValue(
+      helpRequestsFixtures.oneHelpRequest.requestTime
+        .replace("Z", "")
+        .slice(0, 16),
+    );
 
     expectedLabels.forEach((labelText) => {
       expect(screen.getByText(labelText)).toBeInTheDocument();

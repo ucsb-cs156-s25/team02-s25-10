@@ -2,6 +2,10 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
+export function removeZ(mystring) {
+  return mystring.replace("Z", "");
+}
+
 function HelpRequestForm({
   initialContents,
   submitAction,
@@ -12,16 +16,16 @@ function HelpRequestForm({
     formState: { errors },
     handleSubmit,
   } = useForm({
-    defaultValues:
-      {
-        ...initialContents,
-        requestTime: initialContents?.requestTime?.replace?.("Z", ""),
-      } || {},
+    defaultValues: initialContents
+      ? {
+          ...initialContents,
+          requestTime: removeZ(initialContents.requestTime),
+        }
+      : {},
   });
 
   const navigate = useNavigate();
   const testIdPrefix = "HelpRequestsForm";
-
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
       {initialContents && (
@@ -37,11 +41,9 @@ function HelpRequestForm({
           />
         </Form.Group>
       )}
-
       <Form.Group className="mb-3">
         <Form.Label htmlFor="requesterEmail">Requester Email</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-requesterEmail"}
           id="requesterEmail"
           type="email"
           isInvalid={Boolean(errors.requesterEmail)}
@@ -53,11 +55,9 @@ function HelpRequestForm({
           {errors.requesterEmail?.message}
         </Form.Control.Feedback>
       </Form.Group>
-
       <Form.Group className="mb-3">
         <Form.Label htmlFor="teamId">Team ID</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-teamId"}
           id="teamId"
           type="text"
           isInvalid={Boolean(errors.teamId)}
@@ -67,13 +67,11 @@ function HelpRequestForm({
           {errors.teamId?.message}
         </Form.Control.Feedback>
       </Form.Group>
-
       <Form.Group className="mb-3">
         <Form.Label htmlFor="tableOrBreakoutRoom">
           Table / Breakout Room
         </Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-tableOrBreakoutRoom"}
           id="tableOrBreakoutRoom"
           type="text"
           isInvalid={Boolean(errors.tableOrBreakoutRoom)}
@@ -85,11 +83,9 @@ function HelpRequestForm({
           {errors.tableOrBreakoutRoom?.message}
         </Form.Control.Feedback>
       </Form.Group>
-
       <Form.Group className="mb-3">
         <Form.Label htmlFor="requestTime">Request Time (in UTC)</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-requestTime"}
           id="requestTime"
           type="datetime-local"
           isInvalid={Boolean(errors.requestTime)}
@@ -101,7 +97,6 @@ function HelpRequestForm({
           {errors.requestTime?.message}
         </Form.Control.Feedback>
       </Form.Group>
-
       <Form.Group className="mb-3">
         <Form.Label htmlFor="explanation">Explanation</Form.Label>
         <Form.Control
@@ -121,20 +116,15 @@ function HelpRequestForm({
           {errors.explanation?.message}
         </Form.Control.Feedback>
       </Form.Group>
-
       <Form.Group className="mb-3">
         <Form.Check
-          data-testid={testIdPrefix + "-solved"}
           id="solved"
           type="checkbox"
           label="Solved"
           {...register("solved")}
         />
       </Form.Group>
-
-      <Button type="submit" data-testid={testIdPrefix + "-submit"}>
-        {buttonLabel}
-      </Button>
+      <Button type="submit">{buttonLabel}</Button>
       <Button
         variant="Secondary"
         onClick={() => navigate(-1)}
@@ -145,5 +135,4 @@ function HelpRequestForm({
     </Form>
   );
 }
-
 export default HelpRequestForm;
