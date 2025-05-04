@@ -27,17 +27,23 @@ Default.parameters = {
       });
     }),
     http.get("/api/ucsbdiningcommonsmenuitem", () => {
-      return HttpResponse.json(ucsbDiningCommonsMenuItemFixtures.threeUcsbDiningCommonsMenuItem[0], {
-        status: 200,
-      });
+      return HttpResponse.json(
+        ucsbDiningCommonsMenuItemFixtures.threeUcsbDiningCommonsMenuItem[0],
+        {
+          status: 200,
+        },
+      );
     }),
     http.put("/api/ucsbdiningcommonsmenuitem", () => {
-      return HttpResponse.json({
-        id: 1,
-        diningCommonsCode: "ortega",
-        name: "pesto pasta",
-        station: "blue lockers",
-      }, { status: 200 });
+      return HttpResponse.json(
+        {
+          id: 1,
+          diningCommonsCode: "ortega",
+          name: "pesto pasta",
+          station: "blue lockers",
+        },
+        { status: 200 },
+      );
     }),
   ],
 };
