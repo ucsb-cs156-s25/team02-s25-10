@@ -20,8 +20,8 @@ describe("RecommendationForm tests", () => {
     "Requester Email",
     "Professor Email",
     "Explanation",
-    "Date Requested (iso format)",
-    "Date Needed (iso format)",
+    "Date Requested",
+    "Date Needed",
     "Done",
   ];
   const testId = "RecommendationForm";
@@ -63,6 +63,16 @@ describe("RecommendationForm tests", () => {
 
     expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
     expect(screen.getByText(`Id`)).toBeInTheDocument();
+
+    const { dateRequested, dateNeeded } = recommendationRequestFixtures.oneRequest;
+
+    expect(await screen.getByLabelText("Id")).toHaveValue(String(recommendationRequestFixtures.oneRequest.id));
+    expect(await screen.getByLabelText("Requester Email")).toHaveValue(recommendationRequestFixtures.oneRequest.requesterEmail);
+    expect(await screen.getByLabelText("Professor Email")).toHaveValue(recommendationRequestFixtures.oneRequest.professorEmail);
+    expect(await screen.getByLabelText("Explanation")).toHaveValue(recommendationRequestFixtures.oneRequest.explanation);
+    expect(await screen.getByLabelText("Date Requested")).toHaveValue(dateRequested.slice(0, 16));
+    expect(await screen.getByLabelText("Date Needed")).toHaveValue(dateNeeded.slice(0, 16));
+    expect(await screen.getByLabelText("Done")).toHaveValue(String(recommendationRequestFixtures.oneRequest.done));
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {
@@ -95,9 +105,7 @@ describe("RecommendationForm tests", () => {
     fireEvent.click(submitButton);
 
     await screen.findByText(/Requester Email is required./);
-    expect(
-      screen.getByText(/Professor Email is required./),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/Professor Email is required./),).toBeInTheDocument();
     expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
     expect(screen.getByText(/Date Requested is required./)).toBeInTheDocument();
     expect(screen.getByText(/Date Needed is required./)).toBeInTheDocument();
@@ -105,6 +113,38 @@ describe("RecommendationForm tests", () => {
 
     const reqEmailInput = screen.getByTestId(`${testId}-requesterEmail`);
     fireEvent.change(reqEmailInput, { target: { value: "a".repeat(256) } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/Max length has 255 characters/),
+      ).toBeInTheDocument();
+    });
+
+    fireEvent.change(reqEmailInput, { target: { value: "hi" } });
+    await waitFor(() => {
+        expect(screen.queryByText(/Max length has 255 characters/)).not.toBeInTheDocument();
+    });
+    fireEvent.click(submitButton);
+
+    const profEmailInput = screen.getByTestId(`${testId}-professorEmail`);
+    fireEvent.change(profEmailInput, { target: { value: "a".repeat(256) } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/Max length has 255 characters/),
+      ).toBeInTheDocument();
+    });
+
+    fireEvent.change(profEmailInput, { target: { value: "hi" } });
+    await waitFor(() => {
+        expect(screen.queryByText(/Max length has 255 characters/)).not.toBeInTheDocument();
+    });
+    fireEvent.click(submitButton);
+
+    const explanationInput = screen.getByTestId(`${testId}-explanation`);
+    fireEvent.change(explanationInput, { target: { value: "a".repeat(256) } });
     fireEvent.click(submitButton);
 
     await waitFor(() => {

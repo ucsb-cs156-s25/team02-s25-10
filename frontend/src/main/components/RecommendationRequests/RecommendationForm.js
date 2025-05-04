@@ -7,7 +7,8 @@ function RecommendationForm({
   submitAction,
   buttonLabel = "Create",
 }) {
-  const defaultValues = initialContents || {};
+    const defaultValues = initialContents;
+  
 
   // Stryker disable all
   const {
@@ -22,8 +23,7 @@ function RecommendationForm({
   const testIdPrefix = "RecommendationForm";
 
   // Stryker disable Regex
-  const isodate_regex =
-    /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+  // const isodate_regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/;
   // Stryker restore Regex
 
   return (
@@ -103,45 +103,39 @@ function RecommendationForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="dateRequested">
-          Date Requested (iso format)
-        </Form.Label>
+        <Form.Label htmlFor="dateRequested">Date Requested</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-dateRequested"}
-          id="dateRequested"
-          type="datetime-local"
-          isInvalid={Boolean(errors.localDateTime)}
-          {...register("dateRequested", {
-            required: true,
-            pattern: isodate_regex,
-          })}
+            id="dateRequested"
+            type="datetime-local"
+            isInvalid={Boolean(errors.dateRequested)}
+            {...register("dateRequested", {
+            required: "Date Requested is required.",
+            })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.dateRequested && "Date Requested is required. "}
+            {errors.dateRequested?.message}
         </Form.Control.Feedback>
-      </Form.Group>
+        </Form.Group>
 
-      <Form.Group className="mb-3">
-        <Form.Label htmlFor="dateNeeded">Date Needed (iso format)</Form.Label>
+        <Form.Group className="mb-3">
+        <Form.Label htmlFor="dateNeeded">Date Needed</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-dateNeeded"}
-          id="dateNeeded"
-          type="datetime-local"
-          isInvalid={Boolean(errors.localDateTime)}
-          {...register("dateNeeded", {
-            required: true,
-            pattern: isodate_regex,
-          })}
+            id="dateNeeded"
+            type="datetime-local"
+            isInvalid={Boolean(errors.dateNeeded)}
+            {...register("dateNeeded", {
+            required: "Date Needed is required.",
+            })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.dateNeeded && "Date Needed is required. "}
+            {errors.dateNeeded?.message}
         </Form.Control.Feedback>
-      </Form.Group>
+        </Form.Group>
+
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="done">Done</Form.Label>
         <Form.Select
-          data-testid={testIdPrefix + "-done"}
           id="done"
           isInvalid={Boolean(errors.done)}
           {...register("done", {
@@ -157,7 +151,7 @@ function RecommendationForm({
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Button type="submit" data-testid={testIdPrefix + "-submit"}>
+      <Button type="submit">
         {buttonLabel}
       </Button>
       <Button
