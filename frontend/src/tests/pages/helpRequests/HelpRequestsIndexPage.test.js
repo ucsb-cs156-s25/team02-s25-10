@@ -72,6 +72,54 @@ describe("HelpRequestsIndexPage tests", () => {
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
   });
 
+  test("renders Create button for admin user", async () => {
+    setupAdminUser();
+    const queryClient = new QueryClient();
+    axiosMock
+      .onGet("/api/helprequests/all")
+      .reply(200, helpRequestsFixtures.threeHelpRequests);
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <HelpRequestsIndexPage />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText(/Create Help Request/)).toBeInTheDocument();
+    });
+
+    const button = screen.getByText(/Create Help Request/);
+    expect(button).toHaveAttribute("href", "/helprequests/create");
+    expect(button).toHaveStyle("float: right");
+  });
+
+  test("does not show create button for regular user", async () => {
+    setupUserOnly();
+    const queryClient = new QueryClient();
+    axiosMock
+      .onGet("/api/helprequests/all")
+      .reply(200, helpRequestsFixtures.threeHelpRequests);
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <HelpRequestsIndexPage />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId(`${testId}-cell-row-0-col-id`),
+      ).toBeInTheDocument();
+    });
+
+    expect(screen.queryByText(/Create Help Request/)).not.toBeInTheDocument();
+  });
+
   test("renders help requests with buttons for admin", async () => {
     setupAdminUser();
     const queryClient = new QueryClient();
