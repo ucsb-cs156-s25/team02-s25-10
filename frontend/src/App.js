@@ -24,8 +24,6 @@ import UCSBOrganizationsCreatePage from "main/pages/UCSBOrganizations/UCSBOrgani
 import UCSBOrganizationsEditPage from "main/pages/UCSBOrganizations/UCSBOrganizationsEditPage";
 
 import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
-import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
-import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -114,6 +112,10 @@ function App() {
               exact
               path="/recommendationrequests"
               element={<RecommendationRequestIndexPage />}
+            />
+
+            <Route
+              exact
               path="/helprequests"
               element={<HelpRequestsIndexPage />}
             />
