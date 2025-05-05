@@ -148,12 +148,12 @@ function App() {
           <>
             <Route
               exact
-              path="//recommendationrequests/edit/:id"
+              path="/recommendationrequests/edit/:id"
               element={<RecommendationRequestEditPage />}
             />
             <Route
               exact
-              path="//recommendationrequests/create"
+              path="/recommendationrequests/create"
               element={<RecommendationRequestCreatePage />}
             />
           </>
