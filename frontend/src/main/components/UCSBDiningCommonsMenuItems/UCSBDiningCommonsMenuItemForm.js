@@ -36,7 +36,7 @@ function UCSBDiningCommonsMenuItemForm({
       )}
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="name">Dining Commons Code</Form.Label>
+        <Form.Label htmlFor="diningCommonsCode">Dining Commons Code</Form.Label>
         <Form.Control
           id="diningCommonsCode"
           type="text"
@@ -51,7 +51,7 @@ function UCSBDiningCommonsMenuItemForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="description">Name</Form.Label>
+        <Form.Label htmlFor="name">Name</Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-name"}
           id="name"
@@ -71,7 +71,7 @@ function UCSBDiningCommonsMenuItemForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="description">Station</Form.Label>
+        <Form.Label htmlFor="station">Station</Form.Label>
         <Form.Control
           id="station"
           type="text"
