@@ -11,6 +11,10 @@ import RestaurantIndexPage from "main/pages/Restaurants/RestaurantIndexPage";
 import RestaurantCreatePage from "main/pages/Restaurants/RestaurantCreatePage";
 import RestaurantEditPage from "main/pages/Restaurants/RestaurantEditPage";
 
+import RecommendationRequestIndexPage from "main/pages/RecommendationRequests/RecommendationRequestIndexPage";
+import RecommendationRequestCreatePage from "main/pages/RecommendationRequests/RecommendationRequestCreatePage";
+import RecommendationRequestEditPage from "main/pages/RecommendationRequests/RecommendationRequestEditPage";
+
 import HelpRequestsCreatePage from "main/pages/HelpRequests/HelpRequestsCreatePage";
 import HelpRequestsEditPage from "main/pages/HelpRequests/HelpRequestsEditPage";
 import HelpRequestsIndexPage from "main/pages/HelpRequests/HelpRequestsIndexPage";
@@ -20,8 +24,6 @@ import UCSBOrganizationsCreatePage from "main/pages/UCSBOrganizations/UCSBOrgani
 import UCSBOrganizationsEditPage from "main/pages/UCSBOrganizations/UCSBOrganizationsEditPage";
 
 import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
-import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
-import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -108,6 +110,12 @@ function App() {
           <>
             <Route
               exact
+              path="/recommendationrequests"
+              element={<RecommendationRequestIndexPage />}
+            />
+
+            <Route
+              exact
               path="/helprequests"
               element={<HelpRequestsIndexPage />}
             />
@@ -140,13 +148,13 @@ function App() {
           <>
             <Route
               exact
-              path="/placeholder/edit/:id"
-              element={<PlaceholderEditPage />}
+              path="/recommendationrequests/edit/:id"
+              element={<RecommendationRequestEditPage />}
             />
             <Route
               exact
-              path="/placeholder/create"
-              element={<PlaceholderCreatePage />}
+              path="/recommendationrequests/create"
+              element={<RecommendationRequestCreatePage />}
             />
           </>
         )}
