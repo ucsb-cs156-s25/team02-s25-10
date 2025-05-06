@@ -167,7 +167,7 @@ describe("ArticlesEditPage tests", () => {
       expect(mockNavigate).toHaveBeenCalledWith({ to: "/articles" });
 
       expect(axiosMock.history.put.length).toBe(1); // times called
-      expect(axiosMock.history.put[0].params).toEqual({ id: 69 });
+      expect(axiosMock.history.put[0].params).toEqual({ id: 17 });
       expect(axiosMock.history.put[0].data).toBe(
         JSON.stringify({
           title: "DONT MAKE ME DO THIS",
