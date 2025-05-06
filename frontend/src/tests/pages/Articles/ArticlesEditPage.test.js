@@ -131,7 +131,7 @@ describe("ArticlesEditPage tests", () => {
       expect(urlField).toHaveValue("https://example.com");
 
       expect(explanationField).toBeInTheDocument();
-      expect(explanationField).toHaveValue("I cry");
+      expect(explanationField).toHaveValue("OwO");
 
       expect(emailField).toBeInTheDocument();
       expect(emailField).toHaveValue("junjieliu@ucsb.edu");
