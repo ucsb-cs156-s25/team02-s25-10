@@ -140,7 +140,7 @@ public class ArticlesController extends ApiController {
     public Object deleteArticle(
             @Parameter(name="id") @RequestParam Long id) {
         Articles Article = ArticlesRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(Article.class, id));
+                .orElseThrow(() -> new EntityNotFoundException(Articles.class, id));
 
         ArticlesRepository.delete(Article);
         return genericMessage("UCSBArticles with id %s deleted".formatted(id));
