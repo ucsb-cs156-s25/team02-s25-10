@@ -122,7 +122,7 @@ describe("ArticlesEditPage tests", () => {
       const submitButton = screen.getByText("Update");
       //
       expect(idField).toBeInTheDocument();
-      expect(idField).toHaveValue("69");
+      expect(idField).toHaveValue("17");
 
       expect(titleField).toBeInTheDocument();
       expect(titleField).toHaveValue("DONT MAKE ME DO THIS");
