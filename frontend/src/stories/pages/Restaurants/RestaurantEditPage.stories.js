@@ -1,10 +1,10 @@
 import React from "react";
-import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
-import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
+import { apiCurrentUserFixtures } from "main/fixtures/currentUserFixtures";
+import { systemInfoFixtures } from "main/fixtures/systemInfoFixtures";
 import { http, HttpResponse } from "msw";
 
 import RestaurantEditPage from "main/pages/Restaurants/RestaurantEditPage";
-import { restaurantFixtures } from "fixtures/restaurantFixtures";
+import { restaurantFixtures } from "main/fixtures/restaurantFixtures";
 
 export default {
   title: "pages/Restaurants/RestaurantEditPage",

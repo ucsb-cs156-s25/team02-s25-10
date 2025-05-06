@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { currentUserFixtures } from "fixtures/currentUserFixtures";
+import { currentUserFixtures } from "main/fixtures/currentUserFixtures";
 import RoleBadge from "main/components/Profile/RoleBadge";
 
 describe("RoleBadge tests", () => {

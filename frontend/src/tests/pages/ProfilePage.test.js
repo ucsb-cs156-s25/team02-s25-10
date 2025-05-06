@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
+import { apiCurrentUserFixtures } from "main/fixtures/currentUserFixtures";
 
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import ProfilePage from "main/pages/ProfilePage";
-import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
+import { systemInfoFixtures } from "main/fixtures/systemInfoFixtures";
 
 describe("ProfilePage tests", () => {
   const queryClient = new QueryClient();

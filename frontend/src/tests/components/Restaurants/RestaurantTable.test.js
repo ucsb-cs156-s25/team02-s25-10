@@ -1,9 +1,9 @@
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
-import { restaurantFixtures } from "fixtures/restaurantFixtures";
+import { restaurantFixtures } from "main/fixtures/restaurantFixtures";
 import RestaurantTable from "main/components/Restaurants/RestaurantTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import { currentUserFixtures } from "fixtures/currentUserFixtures";
+import { currentUserFixtures } from "main/fixtures/currentUserFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 

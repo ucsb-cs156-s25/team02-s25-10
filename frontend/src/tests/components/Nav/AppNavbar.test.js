@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import { currentUserFixtures } from "fixtures/currentUserFixtures";
+import { currentUserFixtures } from "main/fixtures/currentUserFixtures";
 
 import AppNavbar from "main/components/Nav/AppNavbar";
-import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
+import { systemInfoFixtures } from "main/fixtures/systemInfoFixtures";
 
 describe("AppNavbar tests", () => {
   const queryClient = new QueryClient();

@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import RestaurantForm from "main/components/Restaurants/RestaurantForm";
-import { restaurantFixtures } from "fixtures/restaurantFixtures";
+import { restaurantFixtures } from "main/fixtures/restaurantFixtures";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 

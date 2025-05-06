@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import usersFixtures from "fixtures/usersFixtures";
+import usersFixtures from "main/fixtures/usersFixtures";
 import UsersTable from "main/components/Users/UsersTable";
 
 describe("UserTable tests", () => {

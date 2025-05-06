@@ -1,7 +1,7 @@
 import React from "react";
-import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
-import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { restaurantFixtures } from "fixtures/restaurantFixtures";
+import { apiCurrentUserFixtures } from "main/fixtures/currentUserFixtures";
+import { systemInfoFixtures } from "main/fixtures/systemInfoFixtures";
+import { restaurantFixtures } from "main/fixtures/restaurantFixtures";
 import { http, HttpResponse } from "msw";
 
 import RestaurantIndexPage from "main/pages/Restaurants/RestaurantIndexPage";

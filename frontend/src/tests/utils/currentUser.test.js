@@ -4,10 +4,10 @@ import { renderHook, waitFor, act } from "@testing-library/react";
 import {
   apiCurrentUserFixtures,
   currentUserFixtures,
-} from "fixtures/currentUserFixtures";
+} from "main/fixtures/currentUserFixtures";
 import mockConsole from "jest-mock-console";
 import { useNavigate } from "react-router-dom";
-import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
+import { systemInfoFixtures } from "main/fixtures/systemInfoFixtures";
 
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";

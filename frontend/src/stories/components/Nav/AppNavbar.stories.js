@@ -1,4 +1,4 @@
-import { currentUserFixtures } from "fixtures/currentUserFixtures";
+import { currentUserFixtures } from "main/fixtures/currentUserFixtures";
 import AppNavbar from "main/components/Nav/AppNavbar";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export

@@ -1,6 +1,6 @@
 import React from "react";
 import RestaurantForm from "main/components/Restaurants/RestaurantForm";
-import { restaurantFixtures } from "fixtures/restaurantFixtures";
+import { restaurantFixtures } from "main/fixtures/restaurantFixtures";
 
 export default {
   title: "components/Restaurants/RestaurantForm",

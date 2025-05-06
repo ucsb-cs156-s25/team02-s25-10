@@ -2,9 +2,9 @@ import { render, waitFor, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import AdminUsersPage from "main/pages/AdminUsersPage";
-import usersFixtures from "fixtures/usersFixtures";
-import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
-import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
+import usersFixtures from "main/fixtures/usersFixtures";
+import { apiCurrentUserFixtures } from "main/fixtures/currentUserFixtures";
+import { systemInfoFixtures } from "main/fixtures/systemInfoFixtures";
 import mockConsole from "jest-mock-console";
 
 import axios from "axios";

@@ -1,5 +1,5 @@
-import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
-import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
+import { apiCurrentUserFixtures } from "main/fixtures/currentUserFixtures";
+import { systemInfoFixtures } from "main/fixtures/systemInfoFixtures";
 import { http, HttpResponse } from "msw";
 
 import ProfilePage from "main/pages/ProfilePage";

@@ -1,7 +1,7 @@
 import React from "react";
-import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
-import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { ucsbDatesFixtures } from "fixtures/ucsbDatesFixtures";
+import { apiCurrentUserFixtures } from "main/fixtures/currentUserFixtures";
+import { systemInfoFixtures } from "main/fixtures/systemInfoFixtures";
+import { ucsbDatesFixtures } from "main/fixtures/ucsbDatesFixtures";
 import { http, HttpResponse } from "msw";
 
 import UCSBDatesIndexPage from "main/pages/UCSBDates/UCSBDatesIndexPage";

@@ -1,6 +1,6 @@
 import React from "react";
 import UCSBDateForm from "main/components/UCSBDates/UCSBDateForm";
-import { ucsbDatesFixtures } from "fixtures/ucsbDatesFixtures";
+import { ucsbDatesFixtures } from "main/fixtures/ucsbDatesFixtures";
 
 export default {
   title: "components/UCSBDates/UCSBDateForm",

@@ -7,7 +7,7 @@ import { waitFor } from "@testing-library/react";
 
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
+import { systemInfoFixtures } from "main/fixtures/systemInfoFixtures";
 
 jest.mock("react-router-dom");
 const { _MemoryRouter } = jest.requireActual("react-router-dom");

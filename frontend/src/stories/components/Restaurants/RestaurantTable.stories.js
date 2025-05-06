@@ -1,7 +1,7 @@
 import React from "react";
 import RestaurantTable from "main/components/Restaurants/RestaurantTable";
-import { restaurantFixtures } from "fixtures/restaurantFixtures";
-import { currentUserFixtures } from "fixtures/currentUserFixtures";
+import { restaurantFixtures } from "main/fixtures/restaurantFixtures";
+import { currentUserFixtures } from "main/fixtures/currentUserFixtures";
 import { http, HttpResponse } from "msw";
 
 export default {
