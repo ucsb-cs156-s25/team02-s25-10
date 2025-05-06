@@ -107,8 +107,8 @@ describe("ArticlesIndexPage tests", () => {
     const explanation = screen.getByText("OwO");
     expect(explanation).toBeInTheDocument();
 
-    const email = screen.getByText("junjieliu@ucsb.edu");
-    expect(email).toBeInTheDocument();
+    const emails = screen.getAllByText("junjieliu@ucsb.edu");
+    expect(emails.length).toBeGreaterThan(0);
 
     // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
     expect(

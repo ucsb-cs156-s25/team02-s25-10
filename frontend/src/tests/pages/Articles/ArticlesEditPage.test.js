@@ -161,7 +161,7 @@ describe("ArticlesEditPage tests", () => {
 
       await waitFor(() => expect(mockToast).toBeCalled());
       expect(mockToast).toHaveBeenCalledWith(
-        "Article Updated - id: 69 title: DONT MAKE ME DO THIS",
+        "Article Updated - id: 17 title: owo",
       );
 
       expect(mockNavigate).toHaveBeenCalledWith({ to: "/articles" });
