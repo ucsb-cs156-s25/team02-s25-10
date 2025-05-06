@@ -174,9 +174,9 @@ describe("ArticlesEditPage tests", () => {
           url: "https://example.com",
           explanation: "I cry",
           email: "junjieliu@gmail.com",
-          localDateTime: "2024-01-01T12:00:00",
+          localDateTime: "2024-01-01T12:00",
         }),
-      ); // posted object
+      );
       expect(mockNavigate).toHaveBeenCalledWith({ to: "/articles" });
     });
   });
