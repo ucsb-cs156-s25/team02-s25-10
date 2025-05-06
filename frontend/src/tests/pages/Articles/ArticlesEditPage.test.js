@@ -89,12 +89,12 @@ describe("ArticlesEditPage tests", () => {
         localDateTime: "2022-01-02T12:00:01",
       });
       axiosMock.onPut("/api/articles").reply(200, {
-        id: "69",
-        title: "DONT MAKE ME DO THIS",
+        id: "17",
+        title: "owo",
         url: "https://example.com",
-        explanation: "I cry",
+        explanation: "OwO",
         email: "junjieliu@gmail.com",
-        localDateTime: "2024-01-01T12:00:00",
+        localDateTime: "2022-01-02T12:00:01",
       });
     });
 

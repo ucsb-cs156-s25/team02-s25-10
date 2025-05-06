@@ -121,7 +121,7 @@ describe("ArticlesCreatePage tests", () => {
       url: "https://example.com",
       explanation: "OwO",
       email: "junjieliu@ucsb.edu",
-      dateAdded: "2022-01-02T12:12:12.000",
+      localDateTime: "2022-01-02T12:12:12.000",
     });
 
     // assert - check that the toast was called with the expected message
