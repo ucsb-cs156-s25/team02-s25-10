@@ -1,6 +1,7 @@
 {
     "databaseChangeLog": [
       {
+        
         "changeSet": {
           "id": "Articles-1",
           "author": "JunjieL",

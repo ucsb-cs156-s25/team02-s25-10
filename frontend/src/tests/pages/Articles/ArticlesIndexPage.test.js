@@ -19,7 +19,7 @@ jest.mock("react-toastify", () => {
     toast: (x) => mockToast(x),
   };
 });
-
+//
 describe("ArticlesIndexPage tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);
 

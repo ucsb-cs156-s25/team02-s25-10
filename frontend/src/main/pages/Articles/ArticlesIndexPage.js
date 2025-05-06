@@ -5,7 +5,7 @@ import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import ArticlesTable from "main/components/Articles/ArticlesTable";
 import { useCurrentUser, hasRole } from "main/utils/currentUser";
 import { Button } from "react-bootstrap";
-
+//
 export default function ArticlesIndexPage() {
   const currentUser = useCurrentUser();
 

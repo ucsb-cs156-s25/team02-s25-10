@@ -65,7 +65,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
 
         // Authorization tests for /api/ucsbArticles/post
         // (Perhaps should also have these for put and delete)
-
+//
         @Test
         public void logged_out_users_cannot_post() throws Exception {
                 mockMvc.perform(post("/api/articles/post"))
