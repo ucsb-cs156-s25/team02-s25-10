@@ -35,8 +35,8 @@ import java.time.LocalDateTime;
 @Tag(name = &quot;Articles&quot;)
 @RequestMapping(&quot;/api/articles&quot;)
 @RestController
-<span class="nc" id="L38">@Slf4j</span>
-<span class="nc" id="L39">public class ArticlesController extends ApiController {</span>
+<span class="fc" id="L38">@Slf4j</span>
+<span class="fc" id="L39">public class ArticlesController extends ApiController {</span>
 
     @Autowired
     ArticlesRepository ArticlesRepository;
@@ -50,8 +50,8 @@ import java.time.LocalDateTime;
     @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
     @GetMapping(&quot;/all&quot;)
     public Iterable&lt;Articles&gt; allArticles() {
-<span class="nc" id="L53">        Iterable&lt;Articles&gt; articles = ArticlesRepository.findAll();</span>
-<span class="nc" id="L54">        return articles;</span>
+<span class="fc" id="L53">        Iterable&lt;Articles&gt; articles = ArticlesRepository.findAll();</span>
+<span class="fc" id="L54">        return articles;</span>
     }
 
     /**
@@ -65,10 +65,10 @@ import java.time.LocalDateTime;
     @GetMapping(&quot;&quot;)
     public Articles getById(
             @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
-<span class="nc" id="L68">        Articles Article = ArticlesRepository.findById(id)</span>
-<span class="nc" id="L69">                .orElseThrow(() -&gt; new EntityNotFoundException(Articles.class, id));</span>
+<span class="fc" id="L68">        Articles Article = ArticlesRepository.findById(id)</span>
+<span class="fc" id="L69">                .orElseThrow(() -&gt; new EntityNotFoundException(Articles.class, id));</span>
 
-<span class="nc" id="L71">        return Article;</span>
+<span class="fc" id="L71">        return Article;</span>
     }
 
     /**
@@ -85,18 +85,18 @@ import java.time.LocalDateTime;
             @Parameter(name=&quot;localDateTime&quot;, description=&quot;date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)&quot;) @RequestParam(&quot;localDateTime&quot;) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime)
             throws JsonProcessingException {
 
-<span class="nc" id="L88">        log.info(&quot;localDateTime={}&quot;, localDateTime);</span>
+<span class="fc" id="L88">        log.info(&quot;localDateTime={}&quot;, localDateTime);</span>
 
-<span class="nc" id="L90">        Articles Article = new Articles();</span>
-<span class="nc" id="L91">        Article.setTitle(title);</span>
-<span class="nc" id="L92">        Article.setUrl(url);</span>
-<span class="nc" id="L93">        Article.setExplanation(explanation);</span>
-<span class="nc" id="L94">        Article.setEmail(email);</span>
-<span class="nc" id="L95">        Article.setLocalDateTime(localDateTime);</span>
+<span class="fc" id="L90">        Articles Article = new Articles();</span>
+<span class="fc" id="L91">        Article.setTitle(title);</span>
+<span class="fc" id="L92">        Article.setUrl(url);</span>
+<span class="fc" id="L93">        Article.setExplanation(explanation);</span>
+<span class="fc" id="L94">        Article.setEmail(email);</span>
+<span class="fc" id="L95">        Article.setLocalDateTime(localDateTime);</span>
 
-<span class="nc" id="L97">        Articles savedUcsbArticle = ArticlesRepository.save(Article);</span>
+<span class="fc" id="L97">        Articles savedUcsbArticle = ArticlesRepository.save(Article);</span>
 
-<span class="nc" id="L99">        return savedUcsbArticle;</span>
+<span class="fc" id="L99">        return savedUcsbArticle;</span>
     }
 
      /**
@@ -114,18 +114,18 @@ import java.time.LocalDateTime;
             @Parameter(name=&quot;id&quot;) @RequestParam Long id,
             @RequestBody @Valid Articles incoming) {
 
-<span class="nc" id="L117">            Articles Article = ArticlesRepository.findById(id)</span>
-<span class="nc" id="L118">                .orElseThrow(() -&gt; new EntityNotFoundException(Articles.class, id));</span>
+<span class="fc" id="L117">            Articles Article = ArticlesRepository.findById(id)</span>
+<span class="fc" id="L118">                .orElseThrow(() -&gt; new EntityNotFoundException(Articles.class, id));</span>
 
-<span class="nc" id="L120">        Article.setTitle(incoming.getTitle());</span>
-<span class="nc" id="L121">        Article.setUrl(incoming.getUrl());</span>
-<span class="nc" id="L122">        Article.setExplanation(incoming.getExplanation());</span>
-<span class="nc" id="L123">        Article.setEmail(incoming.getEmail());</span>
-<span class="nc" id="L124">        Article.setLocalDateTime(incoming.getLocalDateTime());</span>
+<span class="fc" id="L120">        Article.setTitle(incoming.getTitle());</span>
+<span class="fc" id="L121">        Article.setUrl(incoming.getUrl());</span>
+<span class="fc" id="L122">        Article.setExplanation(incoming.getExplanation());</span>
+<span class="fc" id="L123">        Article.setEmail(incoming.getEmail());</span>
+<span class="fc" id="L124">        Article.setLocalDateTime(incoming.getLocalDateTime());</span>
 
-<span class="nc" id="L126">        ArticlesRepository.save(Article);</span>
+<span class="fc" id="L126">        ArticlesRepository.save(Article);</span>
 
-<span class="nc" id="L128">        return Article;</span>
+<span class="fc" id="L128">        return Article;</span>
     }
 
      /**
@@ -139,12 +139,13 @@ import java.time.LocalDateTime;
     @DeleteMapping(&quot;&quot;)
     public Object deleteArticle(
             @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
-<span class="nc" id="L142">        Articles Article = ArticlesRepository.findById(id)</span>
-<span class="nc" id="L143">                .orElseThrow(() -&gt; new EntityNotFoundException(Articles.class, id));</span>
+<span class="fc" id="L142">        Articles Article = ArticlesRepository.findById(id)</span>
+<span class="fc" id="L143">                .orElseThrow(() -&gt; new EntityNotFoundException(Articles.class, id));</span>
 
-<span class="nc" id="L145">        ArticlesRepository.delete(Article);</span>
-<span class="nc" id="L146">        return genericMessage(&quot;UCSBArticles with id %s deleted&quot;.formatted(id));</span>
+<span class="fc" id="L145">        ArticlesRepository.delete(Article);</span>
+<span class="fc" id="L146">        return genericMessage(&quot;Articles with id %s deleted&quot;.formatted(id));</span>
     }
 
 }
+//
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
