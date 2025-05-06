@@ -116,9 +116,11 @@ describe("ArticlesEditPage tests", () => {
       const urlField = screen.getByTestId("ArticlesForm-url");
       const explanationField = screen.getByTestId("ArticlesForm-explanation");
       const emailField = screen.getByTestId("ArticlesForm-email");
-      const localDateTimeField = screen.getByLabelText("Date Added (iso format)");
+      const localDateTimeField = screen.getByLabelText(
+        "Date Added (iso format)",
+      );
       const submitButton = screen.getByText("Update");
-//
+      //
       expect(idField).toBeInTheDocument();
       expect(idField).toHaveValue("69");
 
