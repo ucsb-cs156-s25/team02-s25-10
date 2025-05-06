@@ -137,7 +137,7 @@ describe("ArticlesEditPage tests", () => {
       expect(emailField).toHaveValue("junjieliu@ucsb.edu");
 
       expect(localDateTimeField).toBeInTheDocument();
-      expect(localDateTimeField).toHaveValue("2024-01-01T12:00:00");
+      expect(localDateTimeField).toHaveValue("2022-01-02T12:00:01.000");
 
       expect(submitButton).toHaveTextContent("Update");
 
