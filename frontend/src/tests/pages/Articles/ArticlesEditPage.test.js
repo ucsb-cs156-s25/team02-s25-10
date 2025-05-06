@@ -125,7 +125,7 @@ describe("ArticlesEditPage tests", () => {
       expect(idField).toHaveValue("17");
 
       expect(titleField).toBeInTheDocument();
-      expect(titleField).toHaveValue("DONT MAKE ME DO THIS");
+      expect(titleField).toHaveValue("owo");
 
       expect(urlField).toBeInTheDocument();
       expect(urlField).toHaveValue("https://example.com");

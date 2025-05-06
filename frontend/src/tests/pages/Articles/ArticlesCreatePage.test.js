@@ -126,7 +126,7 @@ describe("ArticlesCreatePage tests", () => {
 
     // assert - check that the toast was called with the expected message
     expect(mockToast).toHaveBeenCalledWith(
-      "New article Created - id: 1 title: OwO",
+      "New article Created - id: 1 title: owo",
     );
     expect(mockNavigate).toBeCalledWith({ to: "/articles" });
   });

@@ -31,7 +31,7 @@ describe("ArticlesTable tests", () => {
     "url",
     "explanation",
     "email",
-    "DateAdded",
+    "dateAdded",
   ];
   const testId = "ArticlesTable";
 

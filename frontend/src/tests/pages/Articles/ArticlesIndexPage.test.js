@@ -98,7 +98,7 @@ describe("ArticlesIndexPage tests", () => {
     const createArticleButton = screen.queryByText("Create Article");
     expect(createArticleButton).not.toBeInTheDocument();
 
-    const title = screen.getByText("uwu");
+    const title = screen.getByText("owo");
     expect(title).toBeInTheDocument();
 
     const url = screen.getByText("https://example.com");
