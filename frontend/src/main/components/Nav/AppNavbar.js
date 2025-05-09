@@ -2,7 +2,7 @@ import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 import AppNavbarLocalhost from "main/components/Nav/AppNavbarLocalhost";
-
+//
 export default function AppNavbar({
   currentUser,
   systemInfo,
@@ -63,6 +63,9 @@ export default function AppNavbar({
                   <Nav.Link as={Link} to="/restaurants">
                     Restaurants
                   </Nav.Link>
+                  <Nav.Link as={Link} to="/menuitemreviews">
+                    Menu Item Reviews
+                  </Nav.Link>
                   <Nav.Link as={Link} to="/ucsbdates">
                     UCSB Dates
                   </Nav.Link>
@@ -74,6 +77,12 @@ export default function AppNavbar({
                   </Nav.Link>
                   <Nav.Link as={Link} to="/ucsborganizations">
                     UCSB Organizations
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/ucsbdiningcommonsmenuitem">
+                    UCSB Dining Commons Menu Item
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/articles">
+                    Articles
                   </Nav.Link>
                 </>
               ) : (
