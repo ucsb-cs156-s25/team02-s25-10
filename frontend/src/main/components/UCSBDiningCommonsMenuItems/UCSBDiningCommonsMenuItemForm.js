@@ -87,10 +87,9 @@ function UCSBDiningCommonsMenuItemForm({
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Button
-        data-testid={testIdPrefix + "-submit"}
-        type="submit"
-      >{buttonLabel}</Button>
+      <Button data-testid={testIdPrefix + "-submit"} type="submit">
+        {buttonLabel}
+      </Button>
       <Button
         variant="Secondary"
         onClick={() => navigate(-1)}
