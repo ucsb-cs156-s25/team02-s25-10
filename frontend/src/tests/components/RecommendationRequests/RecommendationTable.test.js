@@ -1,6 +1,7 @@
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { recommendationRequestFixtures } from "fixtures/recommendationRequestFixtures";
 import RecommendationTable from "main/components/RecommendationRequests/RecommendationTable";
+import { renderBooleanCell } from "main/components/RecommendationRequests/RecommendationTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
@@ -13,6 +14,24 @@ jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: () => mockedNavigate,
 }));
+
+describe("renderBooleanCell", () => {
+  test("returns 'Yes' for true", () => {
+    expect(renderBooleanCell({ value: true })).toBe("Yes");
+  });
+
+  test("returns 'No' for false", () => {
+    expect(renderBooleanCell({ value: false })).toBe("No");
+  });
+
+  test("returns 'N/A' for null", () => {
+    expect(renderBooleanCell({ value: null })).toBe("N/A");
+  });
+
+  test("returns 'N/A' for undefined", () => {
+    expect(renderBooleanCell({ value: undefined })).toBe("N/A");
+  });
+});
 
 describe("RecommendationTable tests", () => {
   const queryClient = new QueryClient();

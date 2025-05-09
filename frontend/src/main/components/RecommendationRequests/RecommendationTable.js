@@ -9,6 +9,17 @@ import {
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
+export function renderBooleanCell({ value }) {
+  switch (value) {
+    case true:
+      return "Yes";
+    case false:
+      return "No";
+    default:
+      return "N/A";
+  }
+}
+
 export default function RecommendationTable({
   recommendationRequests,
   currentUser,
@@ -63,6 +74,7 @@ export default function RecommendationTable({
     {
       Header: "Done",
       accessor: "done",
+      Cell: renderBooleanCell,
     },
   ];
 
