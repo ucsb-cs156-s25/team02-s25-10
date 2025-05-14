@@ -40,9 +40,7 @@ export default function UCSBOrganizationsEditPage({ storybook = false }) {
   });
 
   const onSuccess = (ucsborganization) => {
-    toast(
-      `Organization Updated - id: ${ucsborganization.orgCode}`,
-    );
+    toast(`Organization Updated - id: ${ucsborganization.orgCode}`);
   };
 
   const mutation = useBackendMutation(
@@ -72,7 +70,7 @@ export default function UCSBOrganizationsEditPage({ storybook = false }) {
             buttonLabel={"Update"}
             initialContents={{
               ...ucsborganization,
-              orgCode: id
+              orgCode: id,
             }}
           />
         )}
