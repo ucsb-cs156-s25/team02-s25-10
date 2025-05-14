@@ -32,7 +32,7 @@ export default function UCSBOrganizationsEditPage({ storybook = false }) {
       code: id,
     },
     data: {
-      orgCode: ucsborganization.orgCode,
+      orgCode: id,
       orgTranslationShort: ucsborganization.orgTranslationShort,
       orgTranslation: ucsborganization.orgTranslation,
       inactive: ucsborganization.inactive,
@@ -70,7 +70,10 @@ export default function UCSBOrganizationsEditPage({ storybook = false }) {
           <UCSBOrganizationForm
             submitAction={onSubmit}
             buttonLabel={"Update"}
-            initialContents={ucsborganization}
+            initialContents={{
+              ...ucsborganization,
+              orgCode: id,
+            }}
           />
         )}
       </div>

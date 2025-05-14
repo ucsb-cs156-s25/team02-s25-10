@@ -185,6 +185,6 @@ describe("UCSBOrganizationsIndexPage tests", () => {
     });
     expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganizations");
     expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganizations");
-    expect(axiosMock.history.delete[0].params).toEqual({ orgCode: "SKY" });
+    expect(axiosMock.history.delete[0].params).toEqual({ code: "SKY" });
   });
 });
